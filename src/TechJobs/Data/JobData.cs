@@ -100,6 +100,7 @@ namespace TechJobs.Data
                           select j;
 
             return results.Single();
+
         }
 
     }

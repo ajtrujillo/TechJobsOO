@@ -51,17 +51,6 @@ namespace TechJobs.ViewModels
             // TODO #4 - populate the other List<SelectListItem> 
             // collections needed in the view
 
-
-            foreach (Employer field in jobData.Employers.ToList())
-            {
-                Employers.Add(new SelectListItem
-                {
-                    Value = field.ID.ToString(),
-                    Text = field.Value
-                });
-            }
-
-
             foreach (Location field in jobData.Locations.ToList())
             {
                 Locations.Add(new SelectListItem

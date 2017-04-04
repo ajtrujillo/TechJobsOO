@@ -12,7 +12,7 @@ namespace TechJobs.ViewModels
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Employer")]
+        [Display(Name = "Employers")]
         public int EmployerID { get; set; }
 
         // TODO #3 - Included other fields needed to create a job,
@@ -24,11 +24,11 @@ namespace TechJobs.ViewModels
 
         [Required]
         [Display(Name = "SKills")]
-        public int CoreCompetenciesID { get; set; }
+        public int CoreCompetencyID { get; set; }
 
         [Required]
         [Display(Name = "Position Types")]
-        public int PositionTypesID { get; set; }
+        public int PositionTypeID { get; set; }
 
         public List<SelectListItem> Employers { get; set; } = new List<SelectListItem>();
         public List<SelectListItem> Locations { get; set; } = new List<SelectListItem>();
@@ -50,6 +50,16 @@ namespace TechJobs.ViewModels
 
             // TODO #4 - populate the other List<SelectListItem> 
             // collections needed in the view
+
+
+            foreach (Employer field in jobData.Employers.ToList())
+            {
+                Employers.Add(new SelectListItem
+                {
+                    Value = field.ID.ToString(),
+                    Text = field.Value
+                });
+            }
 
 
             foreach (Location field in jobData.Locations.ToList())

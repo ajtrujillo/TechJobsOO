@@ -15,12 +15,13 @@ namespace TechJobs.Controllers
         {
             jobData = JobData.GetInstance();
         }
-
+        //TODO#1
         // The detail display for a given Job at URLs like /Job?id=17
         public IActionResult Index(int id)
         {
             Job singleJob = JobData.GetInstance().Find(id);
-            return View(jobData);
+            //Job singleJob = jobData.Find(id);
+            return View(singleJob);
         }
 
         public IActionResult New()
@@ -43,13 +44,14 @@ namespace TechJobs.Controllers
 
             else
             {
+                JobData data = JobData.GetInstance();
                 Job newJob = new Job
                 {
                     Name = newJobViewModel.Name,
-                    Employer = jobData.Employers.Find(newJobViewModel.EmployerID),
-                    Location = jobData.Locations.Find(newJobViewModel.LocationID),
-                    CoreCompetency = jobData.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID),
-                    PositionType = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID)
+                    Employer = data.Employers.Find(newJobViewModel.EmployerID),
+                    Location = data.Locations.Find(newJobViewModel.LocationID),
+                    CoreCompetency = data.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID),
+                    PositionType = data.PositionTypes.Find(newJobViewModel.PositionTypeID)
                 };
 
                 jobData.Jobs.Add(newJob);

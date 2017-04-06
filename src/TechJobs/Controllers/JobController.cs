@@ -45,14 +45,14 @@ namespace TechJobs.Controllers
             else
             {
                 JobData data = JobData.GetInstance();
-                Job newJob = new Job
-                {
-                    Name = newJobViewModel.Name,
-                    Employer = data.Employers.Find(newJobViewModel.EmployerID),
-                    Location = data.Locations.Find(newJobViewModel.LocationID),
-                    CoreCompetency = data.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID),
-                    PositionType = data.PositionTypes.Find(newJobViewModel.PositionTypeID)
-                };
+                Job newJob = new Job();
+
+                newJob.Name = newJobViewModel.Name;
+                newJob.Employer = data.Employers.Find(newJobViewModel.EmployerID);
+                newJob.Location = data.Locations.Find(newJobViewModel.LocationID);
+                newJob.CoreCompetency = data.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID);
+                newJob.PositionType = data.PositionTypes.Find(newJobViewModel.PositionTypeID);
+                
 
                 jobData.Jobs.Add(newJob);
 
